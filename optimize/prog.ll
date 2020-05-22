@@ -31,6 +31,7 @@ entry:
   %retval = alloca i32, align 4
   %argc.addr = alloca i32, align 4
   %argv.addr = alloca i8**, align 8
+  %a = alloca double, align 8
   %i = alloca i64, align 8
   store i32 0, i32* %retval, align 4
   store i32 %argc, i32* %argc.addr, align 4
@@ -56,12 +57,18 @@ for.body:                                         ; preds = %for.cond
   %4 = load i64, i64* %i, align 8
   %div3 = udiv i64 %4, 1
   store i64 %div3, i64* %i, align 8
+  %5 = load double, double* %a, align 8
+  %div4 = fdiv double 1.000000e+00, %5
+  store double %div4, double* %a, align 8
   br label %for.inc
 
 for.inc:                                          ; preds = %for.body
-  %5 = load i64, i64* %i, align 8
-  %inc = add i64 %5, 1
+  %6 = load i64, i64* %i, align 8
+  %inc = add i64 %6, 1
   store i64 %inc, i64* %i, align 8
+  %7 = load double, double* %a, align 8
+  %inc5 = fadd double %7, 1.000000e+00
+  store double %inc5, double* %a, align 8
   br label %for.cond
 
 for.end:                                          ; preds = %for.cond

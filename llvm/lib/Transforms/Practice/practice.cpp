@@ -50,8 +50,8 @@ private:
     }
 
     bool isTrivial(Instruction const* instruction) const {
-        auto const& operands = instruction->operands();
-        return std::any_of(operands.begin(), operands.end(), [this](auto const& operand) { return isOne(operand); });
+        auto const& rhs = instruction->getOperand(1);;
+        return isOne(rhs);
     }
 
     bool isOne(Value const* operand) const {
@@ -60,9 +60,8 @@ private:
     }
 
     void replaceWithArgument(Instruction* instruction) const {
-        auto const& lhs = instruction->getOperand(0);
         auto const& rhs = instruction->getOperand(1);
-        instruction->replaceAllUsesWith(isOne(lhs) ? rhs : lhs);
+        instruction->replaceAllUsesWith(rhs);
     }
 };
 
