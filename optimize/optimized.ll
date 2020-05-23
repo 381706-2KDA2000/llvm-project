@@ -46,13 +46,13 @@ for.cond:                                         ; preds = %for.inc, %entry
 
 for.body:                                         ; preds = %for.cond
   %1 = load i64, i64* %i, align 8
-  store i64 1, i64* %i, align 8
+  store i64 %1, i64* %i, align 8
   %2 = load i64, i64* %i, align 8
-  store i64 1, i64* %i, align 8
+  store i64 %2, i64* %i, align 8
   %3 = load i64, i64* %i, align 8
-  store i64 1, i64* %i, align 8
+  store i64 %3, i64* %i, align 8
   %4 = load i64, i64* %i, align 8
-  store i64 1, i64* %i, align 8
+  store i64 %4, i64* %i, align 8
   %5 = load double, double* %a, align 8
   %div4 = fdiv double 1.000000e+00, %5
   store double %div4, double* %a, align 8

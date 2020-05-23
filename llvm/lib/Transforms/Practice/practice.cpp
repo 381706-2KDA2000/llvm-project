@@ -60,8 +60,8 @@ private:
     }
 
     void replaceWithArgument(Instruction* instruction) const {
-        auto const& rhs = instruction->getOperand(1);
-        instruction->replaceAllUsesWith(rhs);
+        auto const& lhs = instruction->getOperand(0);
+        instruction->replaceAllUsesWith(lhs);
     }
 };
 
